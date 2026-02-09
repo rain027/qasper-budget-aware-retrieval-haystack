@@ -15,7 +15,12 @@ def main():
     docs = loader.get_documents_for_indexing(paper_ids)
     questions = loader.get_questions(paper_ids)
 
-    store = init_document_store()
+    # 🔧 FIX: Added sql_url parameter and create=True for new index
+    store = init_document_store(
+        sql_url="sqlite:///qasper.db",
+        faiss_index_path="faiss.index",
+        create=True
+    )
     index_documents(store, docs, use_gpu=torch.cuda.is_available())
 
     retriever = BudgetAwareHybridRetriever(

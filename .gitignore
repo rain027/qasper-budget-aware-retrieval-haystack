@@ -6,3 +6,5 @@ __pycache__/
 *.log
 qasper-dev-v0.3.json
 faiss*.json
+TEST_WORKFLOW.md
+diagnose_database.py
